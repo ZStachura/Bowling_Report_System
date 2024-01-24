@@ -1,0 +1,18 @@
+<div class="drop_container" appDragDropInput (fileDropped)="onFileDropped($event)">
+  <input type="file" #fileDropRef id="fileDropRef" (change)="fileHandler($event)">
+  <h3>Drag and drop your file here</h3>
+  <h3>or</h3>
+  <label for="fileDropRef">Browse for file</label>
+</div>
+<div class="files_container">
+  @for (file of files; track $index) {
+    <div class="files_container_file">
+      <h4>
+        {{file.name}}
+      </h4>
+    </div>
+    <div class="files_container_delete" (click)="deleteFile($index)">
+      Delete
+    </div>
+  }
+</div>
