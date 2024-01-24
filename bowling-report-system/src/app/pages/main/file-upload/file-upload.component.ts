@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './file-upload.component.scss'
 })
 export class FileUploadComponent {
-files: any[] =[];
+files: File[] =[]
+droppedFiles:File[] =[]
 
 prepareFilesList(files: File[]) {
   for (const item of files) {
@@ -14,8 +15,14 @@ prepareFilesList(files: File[]) {
   }
 }
 
-onFileDropped(event:any) {
-  this.prepareFilesList(event);
+onFileDropped(event:File[]) {
+  this.droppedFiles =[]
+  for(const file of event){
+    if(file.type==='text/plain'){
+      this.droppedFiles.push(file)
+    }
+  }
+  this.prepareFilesList(this.droppedFiles);
 }
 
 fileHandler(event:Event) {
