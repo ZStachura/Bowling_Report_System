@@ -16,11 +16,19 @@ export class ScoreBoardComponent implements OnInit{
   fileText!:string[]
   players:PlayerInfo[] = []
   correctFile:boolean=true
+  rounds:number[] = []
 
   ngOnInit() {
     this.file=this.localStorage.getCurrentFileLocalStorage()
     this.fileText = this.file.text.split("\n");
     this.getPlayerInfo()
+    this.makeRoundList()
+  }
+
+  makeRoundList(){
+    for(let i=1;i<=22;i++){
+      this.rounds.push(i)
+    }
   }
 
   getPlayerInfo() {

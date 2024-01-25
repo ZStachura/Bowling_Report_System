@@ -1,0 +1,57 @@
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 2rem;
+}
+.players{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+    justify-content: center;
+    align-content: center;
+    h3{
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--prussian-blue);
+    }
+}
+.table{
+    display: flex;
+    flex-direction: row;
+}
+.table_name {
+    width: 120px;
+    height: 40px;
+    border: solid 1px var(--prussian-blue);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    background-color: var(--light-gray);
+}
+.table_scores_final{
+    width: 60px;
+    height: 40px;
+    border: solid 1px var(--prussian-blue);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    background-color: var(--light-gray);
+}
+.table_rounds{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--light-gray);
+}
+.table_round{
+    width: 35px;
+    height: 40px;
+    border: solid 1px var(--prussian-blue);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
