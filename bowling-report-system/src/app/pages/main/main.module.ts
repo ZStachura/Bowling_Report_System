@@ -5,7 +5,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { DragDropInputDirective } from './file-upload/drag-drop-input/drag-drop-input.directive';
 import { ScoreBoardComponent } from './score-board/score-board.component';
-import { DataServiceService } from './data-service/data-service.service';
+import { LocalStorageService } from '../../../shared/services/local-storage/local-storage.service';
 
 @NgModule({
   declarations :[
@@ -16,6 +16,6 @@ import { DataServiceService } from './data-service/data-service.service';
 ],
   imports: [CommonModule, MainRoutingModule],
   exports: [],
-  providers: [DataServiceService]
+  providers: [LocalStorageService]
 })
 export class MainModule {}

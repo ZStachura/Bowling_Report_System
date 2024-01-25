@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataServiceService } from '../data-service/data-service.service';
-import { HttpClient } from '@angular/common/http';
+import { ShortenedFile } from '../../../../shared/interfaces/shortenedFile';
+import { LocalStorageService } from '../../../../shared/services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-score-board',
@@ -8,24 +8,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrl:'./score-board.component.scss'
 })
 export class ScoreBoardComponent implements OnInit{
-  constructor(private dataService:DataServiceService){}
+  constructor(private localStorage:LocalStorageService){}
   
-  file!:File
+  file!:ShortenedFile
   fileText!:string
 
   ngOnInit() {
-    this.file=this.dataService.getCurrentFile()
-    this.readTextFile(this.file)
+    this.file=this.localStorage.getCurrentFileLocalStorage()
   }
-
-  readTextFile(file:File){
-    const reader = new FileReader();
-
-    reader.onload = () =>{
-      this.fileText = reader.result as string
-    }
-    
-    reader.readAsText(file)
-  }
-
 }

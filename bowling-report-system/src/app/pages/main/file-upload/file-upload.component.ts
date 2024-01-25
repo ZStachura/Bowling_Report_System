@@ -1,21 +1,37 @@
-import { Component } from '@angular/core';
-import { DataServiceService } from '../data-service/data-service.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../../../../shared/services/local-storage/local-storage.service';
+import { ShortenedFile } from '../../../../shared/interfaces/shortenedFile';
 
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrl: './file-upload.component.scss'
 })
-export class FileUploadComponent {
-files: File[] =[]
+export class FileUploadComponent implements OnInit{
+files: ShortenedFile[] =[]
 droppedFiles:File[] =[]
+fileText!:string
 
-constructor(private dataService:DataServiceService, private router:Router){}
+constructor(private router:Router, private localStorage:LocalStorageService){}
+
+ngOnInit() {
+  this.files=this.localStorage.getFilesLocalStorage()
+}
 
 prepareFilesList(files: File[]) {
   for (const item of files) {
-    this.files.push(item);
+    let reader = new FileReader();
+    reader.onload = (event) => {
+        let text = event.target!.result as string;
+        let myFile: ShortenedFile = {
+        name: item.name,
+        text: text
+      };
+      this.files.push(myFile);
+      this.updateLocalStorage()
+    };
+    reader.readAsText(item);
   }
 }
 
@@ -38,10 +54,15 @@ fileHandler(event:Event) {
 }
 deleteFile(index: number) {
   this.files.splice(index, 1);
+  this.updateLocalStorage();
 }
 
-onToShow(file:File){
-  this.dataService.changeCurrentFile(file)
+onToShow(file:ShortenedFile){
+  this.localStorage.setCurrentFileLocalStorage(file)
   this.router.navigate(['/main/board'])
+}
+
+updateLocalStorage(){
+  this.localStorage.updateFilesLocalStorage(this.files)
 }
 }
