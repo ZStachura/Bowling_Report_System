@@ -7,6 +7,7 @@ import { DragDropInputDirective } from './file-upload/drag-drop-input/drag-drop-
 import { ScoreBoardComponent } from './score-board/score-board.component';
 import { LocalStorageService } from '../../../shared/services/local-storage/local-storage.service';
 import { PlayerRowComponent } from './score-board/player-row/player-row.component';
+import { CalculateScorePipe } from '../../../shared/pipes/calculate-score/calculate-score.pipe';
 
 @NgModule({
   declarations :[
@@ -14,7 +15,8 @@ import { PlayerRowComponent } from './score-board/player-row/player-row.componen
   FileUploadComponent,
   DragDropInputDirective,
   ScoreBoardComponent,
-  PlayerRowComponent
+  PlayerRowComponent,
+  CalculateScorePipe
 ],
   imports: [CommonModule, MainRoutingModule],
   exports: [],

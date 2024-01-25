@@ -28,10 +28,14 @@ export class ScoreBoardComponent implements OnInit{
       for(let i=0; i<this.fileText.length;i+=2){
         const playerName=this.fileText[i]
         const playerScoreString=this.fileText[i+1].split(",")
-        const playerScore:number[] = [] 
+        const playerScore:any[] = [] 
         if(playerScoreString.length>=20 && playerScoreString.length <=22 ){
           for(const item of playerScoreString){
-            playerScore.push(Number(item))
+            if(item!=='X'){
+              playerScore.push(Number(item))
+            } else {
+              playerScore.push(item)
+            }
           }
         } else {
           this.correctFile=false

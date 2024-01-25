@@ -1,3 +1,7 @@
-<pre>
-  {{player.name}}
-</pre>
+<div class="container">
+<div>{{player.name}}</div>
+<div>{{player.scores | CalculateScore}}</div>
+@for (score of player.scores; track $index) {
+  <div>{{score}}</div>
+}
+</div>
