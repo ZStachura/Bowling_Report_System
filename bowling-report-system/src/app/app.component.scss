@@ -1,0 +1,14 @@
+:host { 
+    min-height: 100%;
+    margin: 0;
+    display: flex;
+}
+
+.bowling-app-main-container {
+    position: relative;
+    width: 100vw;
+    background-color: var(--air-superiority-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

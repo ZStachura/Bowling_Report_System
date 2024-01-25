@@ -21,8 +21,9 @@ ngOnInit() {
 
 prepareFilesList(files: File[]) {
   for (const item of files) {
-    let reader = new FileReader();
-    reader.onload = (event) => {
+    if(this.files.length<5){
+      let reader = new FileReader();
+      reader.onload = (event) => {
         let text = event.target!.result as string;
         let myFile: ShortenedFile = {
         name: item.name,
@@ -32,6 +33,7 @@ prepareFilesList(files: File[]) {
       this.updateLocalStorage()
     };
     reader.readAsText(item);
+    }
   }
 }
 
