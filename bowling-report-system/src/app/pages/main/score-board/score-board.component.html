@@ -1,3 +1,9 @@
-<pre>
-  app-score-board
-</pre>
+@if (file) {
+  <pre>
+    {{file.name}}
+    {{fileText}}
+  </pre>
+} @else {
+  <div>There is no current board to display</div>
+}
+

@@ -7,6 +7,7 @@
 <div class="files_container">
   @for (file of files; track $index) {
     <div class="files_container_file">
+      <div (click)="onToShow(file)">Show</div>
       <h4>
         {{file.name}}
       </h4>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DataServiceService } from '../data-service/data-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-file-upload',
@@ -8,6 +10,8 @@ import { Component } from '@angular/core';
 export class FileUploadComponent {
 files: File[] =[]
 droppedFiles:File[] =[]
+
+constructor(private dataService:DataServiceService, private router:Router){}
 
 prepareFilesList(files: File[]) {
   for (const item of files) {
@@ -34,5 +38,10 @@ fileHandler(event:Event) {
 }
 deleteFile(index: number) {
   this.files.splice(index, 1);
+}
+
+onToShow(file:File){
+  this.dataService.changeCurrentFile(file)
+  this.router.navigate(['/main/board'])
 }
 }
