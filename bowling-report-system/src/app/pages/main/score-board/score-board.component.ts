@@ -32,7 +32,12 @@ export class ScoreBoardComponent implements OnInit{
         if(playerScoreString.length>=20 && playerScoreString.length <=22 ){
           for(const item of playerScoreString){
             if(item!=='X'){
-              playerScore.push(Number(item))
+              if(isNaN(Number(item))){
+                this.correctFile=false
+                break;
+              } else{
+                playerScore.push(Number(item))
+              }
             } else {
               playerScore.push(item)
             }

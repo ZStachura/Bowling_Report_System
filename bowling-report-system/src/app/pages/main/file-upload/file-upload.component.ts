@@ -54,7 +54,15 @@ fileHandler(event:Event) {
 }
 deleteFile(index: number) {
   this.files.splice(index, 1);
+  if(this.files.length===0){
+    this.localStorage.deleteCurrentFileLocalStorage();
+  }
   this.updateLocalStorage();
+}
+
+clearFiles(){
+  this.files = []
+  this.localStorage.clearLocalStorage()
 }
 
 onToShow(file:ShortenedFile){

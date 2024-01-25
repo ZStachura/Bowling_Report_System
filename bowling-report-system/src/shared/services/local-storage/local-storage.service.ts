@@ -41,4 +41,8 @@ export class LocalStorageService {
     localStorage.removeItem('currentFile')
   }
 
+  clearLocalStorage(){
+    localStorage.clear()
+  }
+
 }
