@@ -1,8 +1,12 @@
-@if (file) {
-  <pre>
-    {{file.name}}
-    {{file.text}}
-  </pre>
+@if (file.name || file.text) {
+  @if (correctFile) {
+    @for (player of players; track $index) {
+      <app-player-row [player]="player"></app-player-row>
+    }
+  } @else {
+    <div>Data in this file is not correct</div>
+  }
+
 } @else {
   <div>There is no current board to display</div>
 }

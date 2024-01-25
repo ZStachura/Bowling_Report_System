@@ -6,6 +6,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { DragDropInputDirective } from './file-upload/drag-drop-input/drag-drop-input.directive';
 import { ScoreBoardComponent } from './score-board/score-board.component';
 import { LocalStorageService } from '../../../shared/services/local-storage/local-storage.service';
+import { PlayerRowComponent } from './score-board/player-row/player-row.component';
 
 @NgModule({
   declarations :[
@@ -13,6 +14,7 @@ import { LocalStorageService } from '../../../shared/services/local-storage/loca
   FileUploadComponent,
   DragDropInputDirective,
   ScoreBoardComponent,
+  PlayerRowComponent
 ],
   imports: [CommonModule, MainRoutingModule],
   exports: [],
