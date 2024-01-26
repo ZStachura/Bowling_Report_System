@@ -1,5 +1,5 @@
 
-# Bowling Record System
+# Bowling Report System
 
 This app allows users to upload text files with bowling game scores and view the scoreboard and the total score for each player. The app can store up to 5 files and display them in a list. Users can click on any file to see the results of the game, if the data inside is valid.
 
