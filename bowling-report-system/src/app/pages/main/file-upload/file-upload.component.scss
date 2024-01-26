@@ -71,6 +71,7 @@
     h4{
         width: 350px;
         flex-wrap: wrap;
+        cursor: pointer;
     }
     img{
         margin-top: 13px;
@@ -82,4 +83,5 @@
     flex-direction: row;
     justify-self: flex-end;
     align-self: flex-end;
+    cursor: pointer;
 }
