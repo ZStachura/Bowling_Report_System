@@ -1,4 +1,4 @@
-export interface PlayerInfo{
-    name:string
-    scores:any[]
+export interface PlayerInfo {
+  name: string;
+  scores: any[];
 }

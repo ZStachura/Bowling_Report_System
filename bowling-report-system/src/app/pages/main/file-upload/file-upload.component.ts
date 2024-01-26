@@ -6,73 +6,76 @@ import { ShortenedFile } from '../../../../shared/interfaces/shortenedFile';
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
-  styleUrl: './file-upload.component.scss'
+  styleUrl: './file-upload.component.scss',
 })
-export class FileUploadComponent implements OnInit{
-files: ShortenedFile[] =[]
-droppedFiles:File[] =[]
-fileText!:string
+export class FileUploadComponent implements OnInit {
+  files: ShortenedFile[] = [];
+  droppedFiles: File[] = [];
+  fileText!: string;
 
-constructor(private router:Router, private localStorage:LocalStorageService){}
+  constructor(
+    private router: Router,
+    private localStorage: LocalStorageService
+  ) {}
 
-ngOnInit() {
-  this.files=this.localStorage.getFilesLocalStorage()
-}
+  ngOnInit() {
+    this.files = this.localStorage.getFilesLocalStorage();
+  }
 
-prepareFilesList(files: File[]) {
-  for (const item of files) {
-    if(this.files.length<5){
-      let reader = new FileReader();
-      reader.onload = (event) => {
-        let text = event.target!.result as string;
-        let myFile: ShortenedFile = {
-        name: item.name,
-        text: text
-      };
-      this.files.push(myFile);
-      this.updateLocalStorage()
-    };
-    reader.readAsText(item);
+  prepareFilesList(files: File[]) {
+    for (const item of files) {
+      if (this.files.length < 5) {
+        let reader = new FileReader();
+        reader.onload = (event) => {
+          let text = event.target!.result as string;
+          let myFile: ShortenedFile = {
+            name: item.name,
+            text: text,
+          };
+          this.files.push(myFile);
+          this.updateLocalStorage();
+        };
+        reader.readAsText(item);
+      }
     }
   }
-}
 
-onFileDropped(event:File[]) {
-  this.droppedFiles =[]
-  for(const file of event){
-    if(file.type==='text/plain'){
-      this.droppedFiles.push(file)
+  onFileDropped(event: File[]) {
+    this.droppedFiles = [];
+    for (const file of event) {
+      if (file.type === 'text/plain') {
+        this.droppedFiles.push(file);
+      }
+    }
+    this.prepareFilesList(this.droppedFiles);
+  }
+
+  fileHandler(event: Event) {
+    const filesList = (event.target as HTMLInputElement).files;
+    if (filesList) {
+      const files = Array.from(filesList);
+      this.prepareFilesList(files);
     }
   }
-  this.prepareFilesList(this.droppedFiles);
-}
-
-fileHandler(event:Event) {
-  const filesList = (event.target as HTMLInputElement).files
-  if(filesList){
-    const files = Array.from(filesList)
-    this.prepareFilesList(files);
+  deleteFile(index: number) {
+    this.files.splice(index, 1);
+    if (this.files.length === 0) {
+      this.localStorage.deleteCurrentFileLocalStorage();
+    }
+    this.updateLocalStorage();
   }
-}
-deleteFile(index: number) {
-  this.files.splice(index, 1);
-  if(this.files.length===0){
-    this.localStorage.deleteCurrentFileLocalStorage();
+
+  clearFiles() {
+    this.files = [];
+    this.localStorage.clearLocalStorage();
   }
-  this.updateLocalStorage();
-}
 
-clearFiles(){
-  this.files = []
-  this.localStorage.clearLocalStorage()
-}
+  onToShow(file: ShortenedFile) {
+    this.localStorage.setCurrentFileLocalStorage(file);
+    this.router.navigate(['/main/board']);
+  }
 
-onToShow(file:ShortenedFile){
-  this.localStorage.setCurrentFileLocalStorage(file)
-  this.router.navigate(['/main/board'])
-}
-
-updateLocalStorage(){
-  this.localStorage.updateFilesLocalStorage(this.files)
-}
+  updateLocalStorage() {
+    this.localStorage.updateFilesLocalStorage(this.files);
+  }
 }

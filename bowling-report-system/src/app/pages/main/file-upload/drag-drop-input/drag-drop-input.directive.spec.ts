@@ -3,11 +3,13 @@ import { DragDropInputDirective } from './drag-drop-input.directive';
 import { Component, DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-
 @Component({
-  template: `<input type="file" appDragDropInput (fileDropped)="onFileDropped($event)">`
+  template: `<input
+    type="file"
+    appDragDropInput
+    (fileDropped)="onFileDropped($event)"
+  />`,
 })
-
 class TestHostComponent {
   files: any[] = [];
   onFileDropped(files: any) {
@@ -20,10 +22,9 @@ describe('DragDropInputDirective', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let inputEl: DebugElement;
 
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ DragDropInputDirective, TestHostComponent ]
+      declarations: [DragDropInputDirective, TestHostComponent],
     });
     fixture = TestBed.createComponent(TestHostComponent);
     component = fixture.componentInstance;
@@ -60,8 +61,8 @@ describe('DragDropInputDirective', () => {
     spyOn(component, 'onFileDropped');
     Object.defineProperty(event, 'dataTransfer', {
       value: {
-        files: []
-      }
+        files: [],
+      },
     });
     inputEl.triggerEventHandler('drop', event);
     expect(event.preventDefault).toHaveBeenCalled();

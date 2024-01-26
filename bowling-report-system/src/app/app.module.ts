@@ -12,15 +12,9 @@ function initializeApp(router: Router): () => Promise<void> {
     });
 }
 
-
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [
     {
       provide: APP_INITIALIZER,
@@ -29,6 +23,6 @@ function initializeApp(router: Router): () => Promise<void> {
       multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

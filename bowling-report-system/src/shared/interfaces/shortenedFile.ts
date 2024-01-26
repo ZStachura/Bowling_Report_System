@@ -1,4 +1,4 @@
-export interface ShortenedFile{
-    name:string
-    text:string
+export interface ShortenedFile {
+  name: string;
+  text: string;
 }

@@ -11,10 +11,9 @@ describe('ScoreBoardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScoreBoardComponent ],
-      providers: [ LocalStorageService ]
-    })
-    .compileComponents();
+      declarations: [ScoreBoardComponent],
+      providers: [LocalStorageService],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -28,20 +27,19 @@ describe('ScoreBoardComponent', () => {
   });
 
   it('should get player info from file text', () => {
-
     const file: ShortenedFile = {
       name: 'test.txt',
-      text: 'Alice\n0,X,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2\nBob\n4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4'
+      text: 'Alice\n0,X,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2\nBob\n4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4',
     };
     const expectedPlayers: PlayerInfo[] = [
       {
         name: 'Alice',
-        scores: [0,'X',1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2]
+        scores: [0, 'X', 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2],
       },
       {
         name: 'Bob',
-        scores: [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
-      }
+        scores: [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+      },
     ];
     spyOn(localStorage, 'getCurrentFileLocalStorage').and.returnValue(file);
 
@@ -52,10 +50,9 @@ describe('ScoreBoardComponent', () => {
   });
 
   it('should set correctFile to false if file text is invalid', () => {
-
     const file: ShortenedFile = {
       name: 'invalid.txt',
-      text: 'Alice\n,0,X,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2\nBob,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4'
+      text: 'Alice\n,0,X,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2\nBob,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4',
     };
     spyOn(localStorage, 'getCurrentFileLocalStorage').and.returnValue(file);
 

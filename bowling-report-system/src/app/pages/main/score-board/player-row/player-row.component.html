@@ -1,14 +1,14 @@
 <div class="container">
   <div class="player">
-    <div class="player_name">{{player.name}}</div>
+    <div class="player_name">{{ player.name }}</div>
     <div class="player_scores_final">
-      {{player.scores | CalculateScore}}
+      {{ player.scores | CalculateScore }}
     </div>
     <div class="player_scores">
-      @for  (score of player.scores; track $index) {
-        <div class="player_scores_score">{{score}}</div>
+      @for (score of player.scores; track $index) {
+      <div class="player_scores_score">{{ score }}</div>
       }
     </div>
   </div>
-<div></div>
+  <div></div>
 </div>

@@ -1,29 +1,24 @@
 <div class="container">
-@if (file.name || file.text) {
-  @if (correctFile) {
-    <div class="players">
-      <h3>SCOREBOARD</h3>
-      <div class="table">
-        <div class="table_name">PLAYER</div>
-        <div class="table_scores_final">
-          SCORE
-        </div>
-        <div class="table_rounds">
-          @for (round of rounds; track $index) {
-            <div class="table_round">{{round}}</div>
-          }
-        </div>
+  @if (file.name || file.text) { @if (correctFile) {
+  <div class="players">
+    <h3>SCOREBOARD</h3>
+    <div class="table">
+      <div class="table_name">PLAYER</div>
+      <div class="table_scores_final">SCORE</div>
+      <div class="table_rounds">
+        @for (round of rounds; track $index) {
+        <div class="table_round">{{ round }}</div>
+        }
       </div>
-      @for (player of players; track $index) {
-        <app-player-row [player]="player"></app-player-row>
-      }
     </div>
+    @for (player of players; track $index) {
+    <app-player-row [player]="player"></app-player-row>
+    }
+  </div>
   } @else {
-    <div>Data in this file is not correct</div>
-  }
-} @else {
+  <div>Data in this file is not correct</div>
+  } } @else {
   <div>There is no current board to display</div>
-}
-<div [routerLink]="['/main/files']" class="back_to_files">Back to files</div>
+  }
+  <div [routerLink]="['/main/files']" class="back_to_files">Back to files</div>
 </div>
-

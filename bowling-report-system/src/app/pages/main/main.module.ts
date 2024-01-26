@@ -10,16 +10,16 @@ import { PlayerRowComponent } from './score-board/player-row/player-row.componen
 import { CalculateScorePipe } from '../../../shared/pipes/calculate-score/calculate-score.pipe';
 
 @NgModule({
-  declarations :[
-  MainPageComponent,
-  FileUploadComponent,
-  DragDropInputDirective,
-  ScoreBoardComponent,
-  PlayerRowComponent,
-  CalculateScorePipe
-],
+  declarations: [
+    MainPageComponent,
+    FileUploadComponent,
+    DragDropInputDirective,
+    ScoreBoardComponent,
+    PlayerRowComponent,
+    CalculateScorePipe,
+  ],
   imports: [CommonModule, MainRoutingModule],
   exports: [],
-  providers: [LocalStorageService]
+  providers: [LocalStorageService],
 })
 export class MainModule {}

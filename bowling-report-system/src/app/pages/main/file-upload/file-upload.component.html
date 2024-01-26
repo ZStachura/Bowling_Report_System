@@ -1,32 +1,46 @@
 <div class="page_container">
-<div class="upload_container">
-@if (files.length>=5) {
-  <div class="upload_container_title">YOU REACHED THE LIMIT OF FILES</div>
-} @else {
-  <div class="upload_container_title">UPLOAD YOUR SCORES</div>
-}
-<div class="drop_container" appDragDropInput (fileDropped)="onFileDropped($event)">
-  <input type="file" #fileDropRef id="fileDropRef" accept=".txt" (change)="fileHandler($event)" [disabled]="files.length>=5">
-  <img src="../../../../assets/icons/upload_icon.svg" alt="cloud">
-  <h3>Drag and drop your file here</h3>
-  <h3>or</h3>
-  <label for="fileDropRef">BROWSE FOR FILE</label>
-  <h5>ONLY TXT FILES ALLOWED</h5>
-</div>
-</div>
+  <div class="upload_container">
+    @if (files.length>=5) {
+    <div class="upload_container_title">YOU REACHED THE LIMIT OF FILES</div>
+    } @else {
+    <div class="upload_container_title">UPLOAD YOUR SCORES</div>
+    }
+    <div
+      class="drop_container"
+      appDragDropInput
+      (fileDropped)="onFileDropped($event)"
+    >
+      <input
+        type="file"
+        #fileDropRef
+        id="fileDropRef"
+        accept=".txt"
+        (change)="fileHandler($event)"
+        [disabled]="files.length >= 5"
+      />
+      <img src="./assets/icons/upload_icon.svg" alt="cloud" />
+      <h3>Drag and drop your file here</h3>
+      <h3>or</h3>
+      <label for="fileDropRef">BROWSE FOR FILE</label>
+      <h5>ONLY TXT FILES ALLOWED</h5>
+    </div>
+  </div>
 
-@if (files && files.length>0) {
-    <div class="files_container">
+  @if (files && files.length>0) {
+  <div class="files_container">
     @for (file of files; track $index) {
-      <div class="files_container_file">
-        <h4 (click)="onToShow(file)">
-          {{file.name}}
-        </h4>
-        <img (click)="deleteFile($index)" src="../../../../assets/icons/trash_icon.svg" alt="cloud">
+    <div class="files_container_file">
+      <h4 (click)="onToShow(file)">
+        {{ file.name }}
+      </h4>
+      <img
+        (click)="deleteFile($index)"
+        src="./assets/icons/trash_icon.svg"
+        alt="cloud"
+      />
     </div>
     }
     <div class="clear_files" (click)="clearFiles()">Clear files</div>
-    </div>
-}
+  </div>
+  }
 </div>
-

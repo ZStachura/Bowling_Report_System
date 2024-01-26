@@ -11,7 +11,7 @@ describe('LocalStorageService', () => {
   it('should update files in local storage', () => {
     const mockFiles: ShortenedFile[] = [
       { name: 'test1.txt', text: 'Hello' },
-      { name: 'test2.txt', text: 'World' }
+      { name: 'test2.txt', text: 'World' },
     ];
     service.updateFilesLocalStorage(mockFiles);
     const storedFiles = localStorage.getItem('files');
@@ -21,7 +21,7 @@ describe('LocalStorageService', () => {
   it('should get files from local storage', () => {
     const mockFiles: ShortenedFile[] = [
       { name: 'test1.txt', text: 'Hello' },
-      { name: 'test2.txt', text: 'World' }
+      { name: 'test2.txt', text: 'World' },
     ];
     localStorage.setItem('files', JSON.stringify(mockFiles));
     const retrievedFiles = service.getFilesLocalStorage();
@@ -37,7 +37,7 @@ describe('LocalStorageService', () => {
   it('should delete files from local storage', () => {
     const mockFiles: ShortenedFile[] = [
       { name: 'test1.txt', text: 'Hello' },
-      { name: 'test2.txt', text: 'World' }
+      { name: 'test2.txt', text: 'World' },
     ];
     localStorage.setItem('files', JSON.stringify(mockFiles));
     service.deleteFilesLocalStorage();
@@ -76,7 +76,7 @@ describe('LocalStorageService', () => {
   it('should clear local storage', () => {
     const mockFiles: ShortenedFile[] = [
       { name: 'test1.txt', text: 'Hello' },
-      { name: 'test2.txt', text: 'World' }
+      { name: 'test2.txt', text: 'World' },
     ];
     const mockFile: ShortenedFile = { name: 'test1.txt', text: 'Hello' };
     localStorage.setItem('files', JSON.stringify(mockFiles));

@@ -8,11 +8,11 @@ const routes: Routes = [
   {
     path: '',
     component: MainPageComponent,
-    children:[
-      {path:'',pathMatch:'full',redirectTo:'files'},
-      {path:'files', component:FileUploadComponent, title: 'File Upload' },
-      {path:'board',component:ScoreBoardComponent, title: 'Scoreboard' }
-    ]
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'files' },
+      { path: 'files', component: FileUploadComponent, title: 'File Upload' },
+      { path: 'board', component: ScoreBoardComponent, title: 'Scoreboard' },
+    ],
   },
 ];
 
