@@ -7,7 +7,7 @@ This app allows users to upload text files with bowling game scores and view the
 The text files should have the following format:
 - Each line should contain the name of a player and their round scores, separated by a newline character.
 - The round scores should be comma-separated and consist of numbers from 0 to 9, or X for a strike.
-- Each player should have 10 rounds, except for the last player who can have an extra round if they score a strike or a spare in the 10th round.
+- Each player should have 10 rounds, except for the player who can have an extra round if they score a strike or a spare in the 10th round.
 - The file should have a .txt extension.
 
 For example, a valid file could look like this:
