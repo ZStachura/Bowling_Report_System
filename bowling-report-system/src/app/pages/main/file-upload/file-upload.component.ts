@@ -27,13 +27,15 @@ export class FileUploadComponent implements OnInit {
       if (this.files.length < 5) {
         let reader = new FileReader();
         reader.onload = (event) => {
-          let text = event.target!.result as string;
-          let myFile: ShortenedFile = {
-            name: item.name,
-            text: text,
-          };
-          this.files.push(myFile);
-          this.updateLocalStorage();
+          if (event.target) {
+            let text = event.target.result as string;
+            let myFile: ShortenedFile = {
+              name: item.name,
+              text: text,
+            };
+            this.files.push(myFile);
+            this.updateLocalStorage();
+          }
         };
         reader.readAsText(item);
       }
